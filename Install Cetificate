@@ -1,0 +1,12 @@
+#Install the default cerficate
+Write "******************************************************************"
+Write "Install the nConnect cerficate"
+Write "******************************************************************"
+$p7b = "\\MDPG-OASV-Share\OASIS_Shares\Install\_ATS\mdlive cert\MPDG-OASV-nConnect.MDlive.com.pfx"
+Import-PfxCertificate -FilePath $p7b -CertStoreLocation Cert:\LocalMachine\Root -Password (ConvertTo-SecureString -String "Password123" -AsPlainText -Force)
+
+Write "******************************************************************"
+Write "Install the default cerficate"
+Write "******************************************************************"
+$p8b = "\\MDPG-OASV-Share\OASIS_Shares\Install\_ATS\mdlive cert\MDLive.com.pfx"
+Import-PfxCertificate -FilePath $p8b -CertStoreLocation Cert:\LocalMachine\Root -Password (ConvertTo-SecureString -String "mlc@dm1n" -AsPlainText -Force)
