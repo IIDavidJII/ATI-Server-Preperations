@@ -1,0 +1,19 @@
+$Adapters = (Get-NetAdapter).name
+Foreach($adapter in $Adapters)
+{
+  $PowerSavings = Get-NetAdapterPowerManagement -Name $adapter
+  Switch($PowerSaving)
+  {
+    {$PowerSavings.ArpOffload -eq "Enabled"}               {Set-NetAdapterPowerManagement -Name $Adapter -ArpOffload Disabled}{Continue}
+    {$PowerSavings.NSOffload -eq "Enabled"}                {Set-NetAdapterPowerManagement -Name $Adapter -NSOffload Disabled}{Continue}
+    {$PowerSavings.RsnRekeyOffload -eq "Enabled"}          {Set-NetAdapterPowerManagement -Name $adapter -RsnRekeyOffload Disabled}{Continue}
+    {$PowerSavings.D0PacketCoalescing -eq "Enabled"}       {Set-NetAdapterPowerManagement -Name $adapter -D0PacketCoalescing Disabled}{Continue}
+    {$PowerSavings.SelectiveSuspend -eq "Enabled"}         {Set-NetAdapterPowerManagement -Name $adapter -SelectiveSuspend Disabled}{Continue}
+    {$PowerSavings.DeviceSleepOnDisconnect -eq "Enabled"}  {Set-NetAdapterPowerManagement -Name $adapter -DeviceSleepOnDisconnect Disabled}{Continue}
+    {$PowerSavings.WakeOnMagicPacket -eq "Enabled"}        {Set-NetAdapterPowerManagement -Name $adapter -WakeOnMagicPacket Disabled}{Continue}
+    {$PowerSavings.WakeOnPattern -eq "Enabled"}            {Set-NetAdapterPowerManagement -Name $adapter -WakeOnPattern Disabled}{Break}
+  }
+
+  $PowerSavings
+}
+
