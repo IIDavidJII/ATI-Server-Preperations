@@ -6,12 +6,12 @@ Foreach($adapter in $Adapters)
   {
     {$PowerSavings.ArpOffload -eq "Enabled"}               {Set-NetAdapterPowerManagement -Name $Adapter -ArpOffload Disabled}{Continue}
     {$PowerSavings.NSOffload -eq "Enabled"}                {Set-NetAdapterPowerManagement -Name $Adapter -NSOffload Disabled}{Continue}
-    {$PowerSavings.RsnRekeyOffload -eq "Enabled"}          {Set-NetAdapterPowerManagement -Name $adapter -RsnRekeyOffload Disabled}{Continue}
-    {$PowerSavings.D0PacketCoalescing -eq "Enabled"}       {Set-NetAdapterPowerManagement -Name $adapter -D0PacketCoalescing Disabled}{Continue}
-    {$PowerSavings.SelectiveSuspend -eq "Enabled"}         {Set-NetAdapterPowerManagement -Name $adapter -SelectiveSuspend Disabled}{Continue}
-    {$PowerSavings.DeviceSleepOnDisconnect -eq "Enabled"}  {Set-NetAdapterPowerManagement -Name $adapter -DeviceSleepOnDisconnect Disabled}{Continue}
-    {$PowerSavings.WakeOnMagicPacket -eq "Enabled"}        {Set-NetAdapterPowerManagement -Name $adapter -WakeOnMagicPacket Disabled}{Continue}
-    {$PowerSavings.WakeOnPattern -eq "Enabled"}            {Set-NetAdapterPowerManagement -Name $adapter -WakeOnPattern Disabled}{Break}
+    {$PowerSavings.RsnRekeyOffload -eq "Enabled"}          {Set-NetAdapterPowerManagement -Name $Adapter -RsnRekeyOffload Disabled}{Continue}
+    {$PowerSavings.D0PacketCoalescing -eq "Enabled"}       {Set-NetAdapterPowerManagement -Name $Adapter -D0PacketCoalescing Disabled}{Continue}
+    {$PowerSavings.SelectiveSuspend -eq "Enabled"}         {Set-NetAdapterPowerManagement -Name $Adapter -SelectiveSuspend Disabled}{Continue}
+    {$PowerSavings.DeviceSleepOnDisconnect -eq "Enabled"}  {Set-NetAdapterPowerManagement -Name $Adapter -DeviceSleepOnDisconnect Disabled}{Continue}
+    {$PowerSavings.WakeOnMagicPacket -eq "Enabled"}        {Set-NetAdapterPowerManagement -Name $Adapter -WakeOnMagicPacket Disabled}{Continue}
+    {$PowerSavings.WakeOnPattern -eq "Enabled"}            {Set-NetAdapterPowerManagement -Name $Adapter -WakeOnPattern Disabled}{Break}
   }
   Set-NetAdapterBinding -ComponentID "ms_tcpip6" -Enabled false -Name $adapter
   
