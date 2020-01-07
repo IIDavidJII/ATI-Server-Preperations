@@ -13,7 +13,10 @@ Foreach($adapter in $Adapters)
     {$PowerSavings.WakeOnMagicPacket -eq "Enabled"}        {Set-NetAdapterPowerManagement -Name $adapter -WakeOnMagicPacket Disabled}{Continue}
     {$PowerSavings.WakeOnPattern -eq "Enabled"}            {Set-NetAdapterPowerManagement -Name $adapter -WakeOnPattern Disabled}{Break}
   }
-
+  Set-NetAdapterBinding -ComponentID "ms_tcpip6" -Enabled false -Name $adapter
+  
   $PowerSavings
+  
+  Get-NetAdapterBinding -Name $adapter
 }
 
